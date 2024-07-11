@@ -3,10 +3,10 @@ org/selenium/pom/api/actions/SignUpApi.class
 org/selenium/pom/factory/DriverManager$1.class
 org/selenium/pom/tests/SearchTest.class
 org/selenium/pom/pages/CartPage.class
-org/selenium/pom/tests/AddToCart.class
 org/selenium/pom/utils/ConfigLoader.class
 org/selenium/pom/utils/ConfigLoader$1.class
 org/selenium/pom/constants/DriverType.class
+org/selenium/pom/utils/CookieUtils.class
 org/selenium/pom/utils/PropertyUtils.class
 org/selenium/pom/factory/DriverManager.class
 org/selenium/pom/utils/FakerUtils.class
@@ -21,5 +21,8 @@ org/selenium/pom/objects/BillingAddress.class
 org/selenium/pom/base/BaseTest.class
 org/selenium/pom/utils/JacksonUtils.class
 org/selenium/pom/base/BasePage.class
+org/selenium/pom/tests/CheckOutTest.class
 org/selenium/pom/constants/EnvType.class
 org/selenium/pom/pages/HomePages.class
+org/selenium/pom/tests/LoginTest.class
+org/selenium/pom/tests/AddToCartTest.class

@@ -1,11 +1,11 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
 <suite name="Suite1" verbose="1" thread-count="2" parallel="tests">
-    <test name="Regression1" thread-count="2" parallel="tests">
-        <parameter name="browser" value="CHROME">
-            <classes>
-                <class name="org.selenium.pom.tests.MyFirstTestCase"/>
-            </classes>
+    <test name="Regression1" thread-count="6" parallel="methods">
+        <parameter name="browser" value="FIREFOX">
+            <packages>
+                <package name="org.selenium.pom.tests"/>
+            </packages>
         </parameter>
     </test>
 

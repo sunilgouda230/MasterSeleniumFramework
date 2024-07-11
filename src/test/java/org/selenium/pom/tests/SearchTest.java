@@ -22,11 +22,4 @@ public class SearchTest extends BaseTest {
         Assert.assertTrue(storePage.getTitle().contains(searchFor));
     }
 
-@Test
-    public void test(){
-        HomePages homePages = new HomePages(getDriver());
-        homePages.
-                load().
-                verifyTitle();
-}
 }

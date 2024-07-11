@@ -27,14 +27,23 @@ public class CheckOutPage extends BasePage {
     private final By usernameFld = By.id("username");
     private final By passwordFld = By.id("password");
     private final By loginBtn = By.name("login");
+
+    private final By clickHereloginLink = By.xpath("//a[@class='showlogin']");
+
     private final By overlay = By.xpath("//div[@class='blockUI blockOverlay']");
     private final By selectStateOrCountryBydropDown = By.xpath("//span[@class='select2-results']//li");
     private final By dropDownArrayCountry = By.xpath("(//span[@class='select2-selection__arrow'])[1]");
     private final By dropDownArrayState = By.xpath("(//span[@class='select2-selection__arrow'])[2]");
     private final By selectDirectBankTransfer = By.id("payment_method_bacs");
+    private final By productName = By.xpath("//td[@class='product-name']");
 
     public CheckOutPage(WebDriver driver) {
         super(driver);
+    }
+
+    public CheckOutPage load(){
+        load("/checkout/");
+        return this;
     }
 
 
@@ -50,6 +59,11 @@ public class CheckOutPage extends BasePage {
 
     public CheckOutPage clickLoginBtn(){
         wait.until(ExpectedConditions.elementToBeClickable(loginBtn)).click();
+        return this;
+    }
+
+    public CheckOutPage clickHereToLoginLink(){
+        wait.until(ExpectedConditions.elementToBeClickable(clickHereloginLink)).click();
         return this;
     }
 
@@ -167,6 +181,10 @@ public class CheckOutPage extends BasePage {
             e.click();
         }
         return this;
+    }
+
+    public String getProductItem(){
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(productName)).getText();
     }
 
 

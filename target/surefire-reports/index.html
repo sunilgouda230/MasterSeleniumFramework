@@ -25,7 +25,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -38,8 +38,8 @@
       <div class="suite">
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
-            <a href="#" panel-name="suite-Suite1" class="navigator-link">
-              <span class="suite-name border-passed">Suite1</span>
+            <a href="#" panel-name="suite-Surefire_suite" class="navigator-link">
+              <span class="suite-name border-failed">Surefire suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -49,37 +49,37 @@
             <div class="suite-section-content">
               <ul>
                 <li>
-                  <a href="#" panel-name="test-xml-Suite1" class="navigator-link ">
-                    <span>testng.xml</span>
+                  <a href="#" panel-name="test-xml-Surefire_suite" class="navigator-link ">
+                    <span>[unset file name]</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" panel-name="testlist-Suite1" class="navigator-link ">
+                  <a href="#" panel-name="testlist-Surefire_suite" class="navigator-link ">
                     <span class="test-stats">1 test</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" panel-name="group-Suite1" class="navigator-link ">
+                  <a href="#" panel-name="group-Surefire_suite" class="navigator-link ">
                     <span>0 groups</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" panel-name="times-Suite1" class="navigator-link ">
+                  <a href="#" panel-name="times-Surefire_suite" class="navigator-link ">
                     <span>Times</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" panel-name="reporter-Suite1" class="navigator-link ">
+                  <a href="#" panel-name="reporter-Surefire_suite" class="navigator-link ">
                     <span>Reporter output</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" panel-name="ignored-methods-Suite1" class="navigator-link ">
+                  <a href="#" panel-name="ignored-methods-Surefire_suite" class="navigator-link ">
                     <span>Ignored methods</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" panel-name="chronological-Suite1" class="navigator-link ">
+                  <a href="#" panel-name="chronological-Surefire_suite" class="navigator-link ">
                     <span>Chronological view</span>
                   </a> <!-- navigator-link  -->
                 </li>
@@ -92,26 +92,65 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">2 methods,   2 passed</span>
+                    <span class="method-stats">8 methods, 1 failed,   7 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Surefire_suite" class="hide-methods failed suite-Surefire_suite"> (hide)</a> <!-- hide-methods failed suite-Surefire_suite -->
+                      <a href="#" panel-name="suite-Surefire_suite" class="show-methods failed suite-Surefire_suite"> (show)</a> <!-- show-methods failed suite-Surefire_suite -->
+                    </span>
+                    <div class="method-list-content failed suite-Surefire_suite">
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Surefire_suite" title="org.selenium.pom.tests.LoginTest" class="method navigator-link" hash-for-method="loginDuringCheckOut">loginDuringCheckOut</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-Surefire_suite -->
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
                     <span class="show-or-hide-methods passed">
-                      <a href="#" panel-name="suite-Suite1" class="hide-methods passed suite-Suite1"> (hide)</a> <!-- hide-methods passed suite-Suite1 -->
-                      <a href="#" panel-name="suite-Suite1" class="show-methods passed suite-Suite1"> (show)</a> <!-- show-methods passed suite-Suite1 -->
+                      <a href="#" panel-name="suite-Surefire_suite" class="hide-methods passed suite-Surefire_suite"> (hide)</a> <!-- hide-methods passed suite-Surefire_suite -->
+                      <a href="#" panel-name="suite-Surefire_suite" class="show-methods passed suite-Surefire_suite"> (show)</a> <!-- show-methods passed suite-Surefire_suite -->
                     </span>
-                    <div class="method-list-content passed suite-Suite1">
+                    <div class="method-list-content passed suite-Surefire_suite">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite1" title="org.selenium.pom.tests.MyFirstTestCase" class="method navigator-link" hash-for-method="guestUserAndCheckoutUsingDirectBankTransfer">guestUserAndCheckoutUsingDirectBankTransfer</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="org.selenium.pom.tests.NavigationTest" class="method navigator-link" hash-for-method="NavigateFromHomeToStoreUsingMainMenu">NavigateFromHomeToStoreUsingMainMenu</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite1" title="org.selenium.pom.tests.MyFirstTestCase" class="method navigator-link" hash-for-method="loginAndCheckoutUsingDirectBankTransfer">loginAndCheckoutUsingDirectBankTransfer</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="org.selenium.pom.tests.SearchTest" class="method navigator-link" hash-for-method="SearchWithPartialTest">SearchWithPartialTest</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content passed suite-Suite1 -->
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Surefire_suite" title="org.selenium.pom.tests.AddToCartTest" class="method navigator-link" hash-for-method="addToCartFromStorePage">addToCartFromStorePage</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Surefire_suite" title="org.selenium.pom.tests.CheckOutTest" class="method navigator-link" hash-for-method="guestCheckOutUsingDirectBankTransfer">guestCheckOutUsingDirectBankTransfer</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Surefire_suite" title="org.selenium.pom.tests.MyFirstTestCase" class="method navigator-link" hash-for-method="guestUserAndCheckoutUsingDirectBankTransfer">guestUserAndCheckoutUsingDirectBankTransfer</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Surefire_suite" title="org.selenium.pom.tests.CheckOutTest" class="method navigator-link" hash-for-method="loginAndCheckOutUsingDirectBankTransfer">loginAndCheckOutUsingDirectBankTransfer</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Surefire_suite" title="org.selenium.pom.tests.MyFirstTestCase" class="method navigator-link" hash-for-method="loginAndCheckoutUsingDirectBankTransfer">loginAndCheckoutUsingDirectBankTransfer</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content passed suite-Surefire_suite -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -122,8 +161,38 @@
     </div> <!-- navigator-root -->
     <div class="wrapper">
       <div class="main-panel-root">
-        <div panel-name="suite-Suite1" class="panel Suite1">
-          <div class="suite-Suite1-class-passed">
+        <div panel-name="suite-Surefire_suite" class="panel Surefire_suite">
+          <div class="suite-Surefire_suite-class-failed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="failed.png"/>
+              <span class="class-name">org.selenium.pom.tests.LoginTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="loginDuringCheckOut">
+                  </a> <!-- loginDuringCheckOut -->
+                  <span class="method-name">loginDuringCheckOut</span>
+                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //a[@class=&apos;showlogin&apos;] (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: &apos;4.15.0&apos;, revision: &apos;1d14b5521b&apos;
+System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;aarch64&apos;, os.version: &apos;12.2&apos;, java.version: &apos;21.0.2&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 126.0.6478.127, chrome: {chromedriverVersion: 126.0.6478.126 (d36ace6122e..., userDataDir: /var/folders/qz/sdjqy5_j415...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:63106}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:63106/devtoo..., se:cdpVersion: 126.0.6478.127, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: f58f675dce60d3854b7cda4b21a7eac5
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:229)
+	at org.selenium.pom.pages.CheckOutPage.clickHereToLoginLink(CheckOutPage.java:66)
+	at org.selenium.pom.tests.LoginTest.loginDuringCheckOut(LoginTest.java:33)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+... Removed 10 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Surefire_suite-class-failed -->
+          <div class="suite-Surefire_suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
               <span class="class-name">org.selenium.pom.tests.MyFirstTestCase</span>
@@ -144,123 +213,344 @@
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Suite1-class-passed -->
-        </div> <!-- panel Suite1 -->
-        <div panel-name="test-xml-Suite1" class="panel">
+          </div> <!-- suite-Surefire_suite-class-passed -->
+          <div class="suite-Surefire_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">org.selenium.pom.tests.NavigationTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="NavigateFromHomeToStoreUsingMainMenu">
+                  </a> <!-- NavigateFromHomeToStoreUsingMainMenu -->
+                  <span class="method-name">NavigateFromHomeToStoreUsingMainMenu</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Surefire_suite-class-passed -->
+          <div class="suite-Surefire_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">org.selenium.pom.tests.SearchTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="SearchWithPartialTest">
+                  </a> <!-- SearchWithPartialTest -->
+                  <span class="method-name">SearchWithPartialTest</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Surefire_suite-class-passed -->
+          <div class="suite-Surefire_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">org.selenium.pom.tests.CheckOutTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="guestCheckOutUsingDirectBankTransfer">
+                  </a> <!-- guestCheckOutUsingDirectBankTransfer -->
+                  <span class="method-name">guestCheckOutUsingDirectBankTransfer</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="loginAndCheckOutUsingDirectBankTransfer">
+                  </a> <!-- loginAndCheckOutUsingDirectBankTransfer -->
+                  <span class="method-name">loginAndCheckOutUsingDirectBankTransfer</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Surefire_suite-class-passed -->
+          <div class="suite-Surefire_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">org.selenium.pom.tests.AddToCartTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="addToCartFromStorePage">
+                  </a> <!-- addToCartFromStorePage -->
+                  <span class="method-name">addToCartFromStorePage</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Surefire_suite-class-passed -->
+        </div> <!-- panel Surefire_suite -->
+        <div panel-name="test-xml-Surefire_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">/Users/nmsg459/Documents/Personal/MasterSeleniumFramework/testng.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
-&lt;suite thread-count=&quot;2&quot; parallel=&quot;methods&quot; name=&quot;Suite1&quot; guice-stage=&quot;DEVELOPMENT&quot; verbose=&quot;0&quot;&gt;
-  &lt;test thread-count=&quot;2&quot; parallel=&quot;tests&quot; name=&quot;Regression1&quot; verbose=&quot;0&quot;&gt;
-    &lt;parameter name=&quot;browser&quot; value=&quot;CHROME&quot;/&gt;
+&lt;suite thread-count=&quot;6&quot; parallel=&quot;methods&quot; name=&quot;Surefire suite&quot; verbose=&quot;0&quot;&gt;
+  &lt;test thread-count=&quot;6&quot; parallel=&quot;methods&quot; name=&quot;Surefire test&quot; verbose=&quot;0&quot;&gt;
     &lt;classes&gt;
+      &lt;class name=&quot;org.selenium.pom.tests.CheckOutTest&quot;/&gt;
+      &lt;class name=&quot;org.selenium.pom.tests.SearchTest&quot;/&gt;
+      &lt;class name=&quot;org.selenium.pom.tests.LoginTest&quot;/&gt;
+      &lt;class name=&quot;org.selenium.pom.tests.NavigationTest&quot;/&gt;
+      &lt;class name=&quot;org.selenium.pom.tests.AddToCartTest&quot;/&gt;
       &lt;class name=&quot;org.selenium.pom.tests.MyFirstTestCase&quot;/&gt;
+      &lt;class name=&quot;org.selenium.pom.api.actions.DummyTestCase&quot;/&gt;
+      &lt;class name=&quot;org.selenium.pom.base.BaseTest&quot;/&gt;
     &lt;/classes&gt;
-  &lt;/test&gt; &lt;!-- Regression1 --&gt;
-&lt;/suite&gt; &lt;!-- Suite1 --&gt;
+  &lt;/test&gt; &lt;!-- Surefire test --&gt;
+&lt;/suite&gt; &lt;!-- Surefire suite --&gt;
             </pre>
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="testlist-Suite1" class="panel">
+        <div panel-name="testlist-Surefire_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Tests for Suite1</span>
+            <span class="header-content">Tests for Surefire suite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <ul>
               <li>
-                <span class="test-name">Regression1 (1 class)</span>
+                <span class="test-name">Surefire test (8 classes)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="group-Suite1" class="panel">
+        <div panel-name="group-Surefire_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Groups for Suite1</span>
+            <span class="header-content">Groups for Surefire suite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="times-Suite1" class="panel">
+        <div panel-name="times-Surefire_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Times for Suite1</span>
+            <span class="header-content">Times for Surefire suite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="times-div">
               <script type="text/javascript">
-suiteTableInitFunctions.push('tableData_Suite1');
-function tableData_Suite1() {
+suiteTableInitFunctions.push('tableData_Surefire_suite');
+function tableData_Surefire_suite() {
 var data = new google.visualization.DataTable();
 data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(2);
+data.addRows(8);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'guestUserAndCheckoutUsingDirectBankTransfer')
+data.setCell(0, 1, 'loginAndCheckoutUsingDirectBankTransfer')
 data.setCell(0, 2, 'org.selenium.pom.tests.MyFirstTestCase')
-data.setCell(0, 3, 29522);
+data.setCell(0, 3, 100829);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'loginAndCheckoutUsingDirectBankTransfer')
-data.setCell(1, 2, 'org.selenium.pom.tests.MyFirstTestCase')
-data.setCell(1, 3, 14352);
-window.suiteTableData['Suite1']= { tableData: data, tableDiv: 'times-div-Suite1'}
+data.setCell(1, 1, 'loginAndCheckOutUsingDirectBankTransfer')
+data.setCell(1, 2, 'org.selenium.pom.tests.CheckOutTest')
+data.setCell(1, 3, 98960);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'guestUserAndCheckoutUsingDirectBankTransfer')
+data.setCell(2, 2, 'org.selenium.pom.tests.MyFirstTestCase')
+data.setCell(2, 3, 98469);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'guestCheckOutUsingDirectBankTransfer')
+data.setCell(3, 2, 'org.selenium.pom.tests.CheckOutTest')
+data.setCell(3, 3, 98464);
+data.setCell(4, 0, 4)
+data.setCell(4, 1, 'loginDuringCheckOut')
+data.setCell(4, 2, 'org.selenium.pom.tests.LoginTest')
+data.setCell(4, 3, 45825);
+data.setCell(5, 0, 5)
+data.setCell(5, 1, 'addToCartFromStorePage')
+data.setCell(5, 2, 'org.selenium.pom.tests.AddToCartTest')
+data.setCell(5, 3, 38359);
+data.setCell(6, 0, 6)
+data.setCell(6, 1, 'SearchWithPartialTest')
+data.setCell(6, 2, 'org.selenium.pom.tests.SearchTest')
+data.setCell(6, 3, 29087);
+data.setCell(7, 0, 7)
+data.setCell(7, 1, 'NavigateFromHomeToStoreUsingMainMenu')
+data.setCell(7, 2, 'org.selenium.pom.tests.NavigationTest')
+data.setCell(7, 3, 26797);
+window.suiteTableData['Surefire_suite']= { tableData: data, tableDiv: 'times-div-Surefire_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 43 seconds</span>
-              <div id="times-div-Suite1">
-              </div> <!-- times-div-Suite1 -->
+              <span class="suite-total-time">Total running time: 8 minutes</span>
+              <div id="times-div-Surefire_suite">
+              </div> <!-- times-div-Surefire_suite -->
             </div> <!-- times-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="reporter-Suite1" class="panel">
+        <div panel-name="reporter-Surefire_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Reporter output for Suite1</span>
+            <span class="header-content">Reporter output for Surefire suite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="ignored-methods-Suite1" class="panel">
+        <div panel-name="ignored-methods-Surefire_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
             <span class="header-content">0 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="chronological-Suite1" class="panel">
+        <div panel-name="chronological-Surefire_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
             <span class="header-content">Methods in chronological order</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">org.selenium.pom.tests.MyFirstTestCase</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">org.selenium.pom.tests.NavigationTest</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
                 <span class="method-name">startDriver(CHROME)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-method before -->
-              <div class="test-method">
-                <span class="method-name">guestUserAndCheckoutUsingDirectBankTransfer</span>
-                <span class="method-start">4662 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">quitDriver</span>
-                <span class="method-start">34186 ms</span>
-              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">org.selenium.pom.tests.CheckOutTest</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
                 <span class="method-name">startDriver(CHROME)</span>
-                <span class="method-start">34400 ms</span>
+                <span class="method-start">0 ms</span>
               </div> <!-- configuration-method before -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">org.selenium.pom.tests.LoginTest</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">startDriver(CHROME)</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-method before -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">org.selenium.pom.tests.AddToCartTest</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">startDriver(CHROME)</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-method before -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">org.selenium.pom.tests.CheckOutTest</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">startDriver(CHROME)</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-method before -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">org.selenium.pom.tests.SearchTest</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">startDriver(CHROME)</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-method before -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">org.selenium.pom.tests.AddToCartTest</div> <!-- chronological-class-name -->
               <div class="test-method">
-                <span class="method-name">loginAndCheckoutUsingDirectBankTransfer</span>
-                <span class="method-start">35588 ms</span>
+                <span class="method-name">addToCartFromStorePage</span>
+                <span class="method-start">9854 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">org.selenium.pom.tests.SearchTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">SearchWithPartialTest</span>
+                <span class="method-start">9854 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">org.selenium.pom.tests.CheckOutTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">guestCheckOutUsingDirectBankTransfer</span>
+                <span class="method-start">9854 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">loginAndCheckOutUsingDirectBankTransfer</span>
+                <span class="method-start">9854 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">org.selenium.pom.tests.LoginTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">loginDuringCheckOut</span>
+                <span class="method-start">9854 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">org.selenium.pom.tests.NavigationTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">NavigateFromHomeToStoreUsingMainMenu</span>
+                <span class="method-start">10033 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">quitDriver</span>
-                <span class="method-start">49940 ms</span>
+                <span class="method-start">36840 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">org.selenium.pom.tests.MyFirstTestCase</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">startDriver(CHROME)</span>
+                <span class="method-start">38295 ms</span>
+              </div> <!-- configuration-method before -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">org.selenium.pom.tests.SearchTest</div> <!-- chronological-class-name -->
+              <div class="configuration-method after">
+                <span class="method-name">quitDriver</span>
+                <span class="method-start">38942 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">org.selenium.pom.tests.MyFirstTestCase</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">startDriver(CHROME)</span>
+                <span class="method-start">39568 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">guestUserAndCheckoutUsingDirectBankTransfer</span>
+                <span class="method-start">47981 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">loginAndCheckoutUsingDirectBankTransfer</span>
+                <span class="method-start">47998 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">org.selenium.pom.tests.AddToCartTest</div> <!-- chronological-class-name -->
+              <div class="configuration-method after">
+                <span class="method-name">quitDriver</span>
+                <span class="method-start">48213 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">org.selenium.pom.tests.LoginTest</div> <!-- chronological-class-name -->
+              <div class="configuration-method after">
+                <span class="method-name">quitDriver</span>
+                <span class="method-start">55725 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">org.selenium.pom.tests.CheckOutTest</div> <!-- chronological-class-name -->
+              <div class="configuration-method after">
+                <span class="method-name">quitDriver</span>
+                <span class="method-start">108320 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method after">
+                <span class="method-name">quitDriver</span>
+                <span class="method-start">108814 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">org.selenium.pom.tests.MyFirstTestCase</div> <!-- chronological-class-name -->
+              <div class="configuration-method after">
+                <span class="method-name">quitDriver</span>
+                <span class="method-start">146451 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method after">
+                <span class="method-name">quitDriver</span>
+                <span class="method-start">148827 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
