@@ -7,6 +7,7 @@ import java.io.IOException;
 public class Products {
     private String name;
     private int id;
+    private boolean feature;
 
     public Products(){}
 
@@ -16,9 +17,18 @@ public class Products {
             if (product.getId() == id){
                 this.id = product.getId();
                 this.name = product.getName();
+                this.feature= product.getFeature();
             }
         }
 
+    }
+
+    public boolean getFeature() {
+        return feature;
+    }
+
+    public void setFeature(boolean feature) {
+        this.feature = feature;
     }
 
     public String getName() {

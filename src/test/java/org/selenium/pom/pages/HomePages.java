@@ -5,13 +5,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.selenium.pom.base.BasePage;
+import org.selenium.pom.pages.Components.CommonHeaders;
+import org.selenium.pom.pages.Components.ProductThumbnail;
 
 public class HomePages extends BasePage {
-
-    private final By storeMenuLink = By.xpath("//li[@id='menu-item-1227']/a[contains(text(),'Store')]");
+    private CommonHeaders commonHeaders;
+    private ProductThumbnail productThumbnail;
 
     public HomePages(WebDriver driver) {
         super(driver);
+        commonHeaders = new CommonHeaders(driver);
+        productThumbnail = new ProductThumbnail(driver);
     }
 
 
@@ -20,17 +24,20 @@ public class HomePages extends BasePage {
         return this;
     }
 
-    public StorePage navigateToStoreUsingMenu(){
-        wait.until(ExpectedConditions.elementToBeClickable(storeMenuLink)).click();
-        return new StorePage(driver);
+    public CommonHeaders getCommonHeaders() {
+        return commonHeaders;
     }
 
-    public WebElement logo(){
-        return driver.findElement(By.xpath("//a[@class='header-brand-site-logo-container__link']"));
+    public void setCommonHeaders(CommonHeaders commonHeaders) {
+        this.commonHeaders = commonHeaders;
     }
 
-    public HomePages verifyTitle(){
-        wait.until(ExpectedConditions.visibilityOf(logo()));
-        return this;
+    public ProductThumbnail getProductThumbnail() {
+        return productThumbnail;
     }
+
+    public void setProductThumbnail(ProductThumbnail productThumbnail) {
+        this.productThumbnail = productThumbnail;
+    }
+
 }

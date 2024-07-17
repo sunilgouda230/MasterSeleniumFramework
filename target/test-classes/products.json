@@ -1,6 +1,35 @@
 [
   {
     "id" : 1215,
-    "name": "Blue Shoes"
+    "name": "Blue Shoes",
+    "feature": true
+  },
+  {
+    "id" : 1209,
+    "name": "Denim Blue Jeans",
+    "feature": true
+  },
+  {
+    "id" : 1205,
+    "name": "Basic Blue Jeans"
+  },
+  {
+    "id" : 1198,
+    "name": "Anchor Bracelet"
+  },
+  {
+    "id" : 1196,
+    "name": "Blue Tshirt",
+    "feature": true
+  },
+  {
+    "id" : 1193,
+    "name": "Black Over-the-shoulder Handbag",
+    "feature": false
+  },
+  {
+    "id" : 1211,
+    "name": "Dark Brown Jeans",
+    "feature": false
   }
 ]

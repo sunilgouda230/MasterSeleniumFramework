@@ -17,7 +17,11 @@ public class SpecBuilder {
 
         public static ResponseSpecification getResponseSpec(){
             return new ResponseSpecBuilder().
-                    log(LogDetail.ALL).
+                    log(LogDetail.URI).
+                    log(LogDetail.HEADERS).
+                    log(LogDetail.COOKIES).
+                    log(LogDetail.STATUS).
+                    log(LogDetail.METHOD).
                     build();
         }
 }

@@ -13,7 +13,7 @@ import static io.restassured.RestAssured.responseSpecification;
 
 public class ApiRequest extends SpecBuilder{
 
-    public static Response post(String endpoint, Headers headers, HashMap<String,Object> formParams,
+    protected static Response post(String endpoint, Headers headers, HashMap<String,Object> formParams,
                                 Cookies cookies){
         return given(getRequestSpec())
                 .headers(headers)
@@ -28,7 +28,7 @@ public class ApiRequest extends SpecBuilder{
                 response();
     }
 
-    public static Response get(String endpoint, Cookies cookies){
+    protected static Response get(String endpoint, Cookies cookies){
         return given(getRequestSpec()).
                 cookies(cookies).
         when().

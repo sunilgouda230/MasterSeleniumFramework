@@ -63,7 +63,7 @@ public class CheckOutPage extends BasePage {
     }
 
     public CheckOutPage clickHereToLoginLink(){
-        wait.until(ExpectedConditions.elementToBeClickable(clickHereloginLink)).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(clickHereloginLink)).click();
         return this;
     }
 
