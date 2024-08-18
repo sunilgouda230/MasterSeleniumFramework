@@ -24,7 +24,7 @@ public class SearchTest extends BaseTest {
 
     @Test
     public void dummy(){
-        System.out.println("the test method for webhook");
+        System.out.println("test method for webhook");
     }
 
 }
