@@ -8,6 +8,7 @@ import org.selenium.pom.objects.StoreProducts;
 import org.selenium.pom.pages.CartPage;
 import org.selenium.pom.pages.HomePages;
 import org.selenium.pom.pages.StorePage;
+import org.selenium.pom.utils.ConfigLoader;
 import org.selenium.pom.utils.JacksonUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;

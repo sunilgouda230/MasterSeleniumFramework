@@ -55,10 +55,10 @@ public class BaseTest {
     @Parameters("browser")
     @BeforeMethod
     public synchronized void startDriver(@Optional String browser){
-              browser = System.getProperty("browser", browser);
-//        if (browser == null) {
-//            browser = "CHROME";
-//        }
+             // browser = System.getProperty("browser", browser);
+        if (browser == null) {
+            browser = "CHROME";
+        }
        // setDriver(new DriverManager().initializeDriver(browser));
         setDriverManager(DriverManagerFactoryAbstract.getManager(DriverType.valueOf(browser)));
         setDriver(getDriverManager().getDriver());

@@ -12,11 +12,11 @@
         </parameter>
     </test>
 
-    <!--<test name="Regression2" thread-count="2" parallel="tests" enabled="true">
+    <test name="Regression2" thread-count="2" parallel="tests" enabled="true">
         <parameter name="browser" value="FIREFOX">
             <classes>
                 <class name="org.selenium.pom.tests.MyFirstTestCase"/>
             </classes>
         </parameter>
-    </test>-->
+    </test>
 </suite>

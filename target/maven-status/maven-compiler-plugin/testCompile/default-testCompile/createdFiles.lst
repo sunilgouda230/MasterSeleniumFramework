@@ -1,7 +1,14 @@
 org/selenium/pom/tests/MyFirstTestCase.class
+org/selenium/pom/api/actions/ApiRequest.class
 org/selenium/pom/api/actions/SignUpApi.class
+org/selenium/pom/pages/Components/ProductThumbnail.class
 org/selenium/pom/factory/DriverManager$1.class
+org/selenium/pom/objects/StoreProducts.class
+org/selenium/pom/pages/Components/CommonHeaders.class
+org/selenium/pom/dataprovider/CustomDataProvider.class
+org/selenium/pom/constants/EndPoint.class
 org/selenium/pom/tests/SearchTest.class
+org/selenium/pom/factory/abstractFactory/DriverManagerFactoryAbstract.class
 org/selenium/pom/pages/CartPage.class
 org/selenium/pom/utils/ConfigLoader.class
 org/selenium/pom/utils/ConfigLoader$1.class
@@ -14,6 +21,7 @@ org/selenium/pom/api/actions/DummyTestCase.class
 org/selenium/pom/objects/User.class
 org/selenium/pom/tests/NavigationTest.class
 org/selenium/pom/objects/Products.class
+org/selenium/pom/factory/abstractFactory/DriverManagerFactoryAbstract$1.class
 org/selenium/pom/pages/CheckOutPage.class
 org/selenium/pom/api/actions/CartApi.class
 org/selenium/pom/pages/StorePage.class
@@ -22,7 +30,11 @@ org/selenium/pom/base/BaseTest.class
 org/selenium/pom/utils/JacksonUtils.class
 org/selenium/pom/base/BasePage.class
 org/selenium/pom/tests/CheckOutTest.class
+org/selenium/pom/api/actions/SpecBuilder.class
 org/selenium/pom/constants/EnvType.class
+org/selenium/pom/factory/abstractFactory/ChromeDriverManager.class
 org/selenium/pom/pages/HomePages.class
 org/selenium/pom/tests/LoginTest.class
+org/selenium/pom/factory/abstractFactory/DriverManagerAbstract.class
+org/selenium/pom/factory/abstractFactory/FirefoxDriverManager.class
 org/selenium/pom/tests/AddToCartTest.class
