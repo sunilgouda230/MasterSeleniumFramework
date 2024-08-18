@@ -24,7 +24,7 @@ public class SearchTest extends BaseTest {
 
     @Test
     public void dummytest(){
-        System.out.println("testing the test metho");
+        System.out.println("testing the test method");
     }
 
 }
