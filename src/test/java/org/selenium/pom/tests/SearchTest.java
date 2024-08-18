@@ -22,4 +22,9 @@ public class SearchTest extends BaseTest {
         Assert.assertTrue(storePage.getTitle().contains(searchFor));
     }
 
+    @Test
+    public void dummytest(){
+        System.out.println("testing the test method");
+    }
+
 }
