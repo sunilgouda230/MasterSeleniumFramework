@@ -25,10 +25,16 @@ public class ConfigLoader {
 
     public static ConfigLoader getInstance() {
         if (configLoader == null){
-            configLoader = new ConfigLoader();
+            synchronized (ConfigLoader.class) {
+                if (configLoader == null) {
+                    configLoader = new ConfigLoader();
+                }
+            }
+
         }
         return configLoader;
     }
+
     public String getBaseUrl(){
         String prop = properties.getProperty("baseurl");
         if (prop != null ){
@@ -63,5 +69,19 @@ public class ConfigLoader {
         } else {
             throw new RuntimeException("property email is not specified in properties file");
         }
+    }
+
+    public String getValue(String key){
+        String prop = properties.getProperty(key);
+        if (prop != null ){
+            return prop;
+        } else {
+            throw new RuntimeException("property email is not specified in properties file");
+        }
+    }
+
+    public boolean isGridEnabled(){
+        boolean prop = Boolean.parseBoolean(properties.getProperty("selenium.grid.enable"));
+        return prop;
     }
 }

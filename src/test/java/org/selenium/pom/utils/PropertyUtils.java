@@ -17,7 +17,7 @@ public class PropertyUtils {
                 e.printStackTrace();
                 throw new RuntimeException("Failed to load the properties file "+filepath);
             }
-        }catch (FileNotFoundException ex){
+        } catch (FileNotFoundException ex){
             ex.printStackTrace();
             throw  new RuntimeException("File Not Found at "+ filepath);
         }

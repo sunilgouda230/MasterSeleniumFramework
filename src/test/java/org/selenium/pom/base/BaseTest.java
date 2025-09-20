@@ -6,11 +6,12 @@ import org.openqa.selenium.Cookie;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.io.FileHandler;
+import org.selenium.pom.constants.Constants;
 import org.selenium.pom.constants.DriverType;
-import org.selenium.pom.factory.DriverManager;
 import org.selenium.pom.factory.abstractFactory.DriverManagerAbstract;
 import org.selenium.pom.factory.abstractFactory.DriverManagerFactoryAbstract;
+import org.selenium.pom.factory.abstractFactory.RemoteDriverManagerChrome;
+import org.selenium.pom.utils.ConfigLoader;
 import org.selenium.pom.utils.CookieUtils;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -23,7 +24,6 @@ import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 
 import javax.imageio.ImageIO;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -32,8 +32,8 @@ import java.util.List;
 public class BaseTest {
 
     private final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
-
     private final ThreadLocal<DriverManagerAbstract> driverManager = new ThreadLocal<>();
+    private final ConfigLoader config = ConfigLoader.getInstance();
 
     private void setDriver(WebDriver driver){
         this.driver.set(driver);
@@ -51,65 +51,74 @@ public class BaseTest {
         this.driverManager.set(driverManager);
     }
 
-
     @Parameters("browser")
     @BeforeMethod
     public synchronized void startDriver(@Optional String browser){
-             // browser = System.getProperty("browser", browser);
-        if (browser == null) {
-            browser = "CHROME";
+        if (browser == null) browser = Constants.CHROME;
+
+        DriverManagerAbstract manager;
+
+        if (config.isGridEnabled()) {
+            System.out.println("Grid enabled, using RemoteDriverManagerChrome");
+            manager = new RemoteDriverManagerChrome();
+        } else {
+            System.out.println("Grid disabled, using local driver");
+            manager = DriverManagerFactoryAbstract.getManager(DriverType.valueOf(browser));
         }
-       // setDriver(new DriverManager().initializeDriver(browser));
-        setDriverManager(DriverManagerFactoryAbstract.getManager(DriverType.valueOf(browser)));
-        setDriver(getDriverManager().getDriver());
-        System.out.println("CURRENT THREAD "+ Thread.currentThread().getId() + " ,"+ getDriverManager().getDriver());
+
+        setDriverManager(manager);
+        setDriver(manager.getDriver());
+
+        System.out.println("CURRENT THREAD " + Thread.currentThread().getId() + " , " + getDriverManager().getDriver());
     }
 
     @Parameters("browser")
     @AfterMethod
-    public synchronized void quitDriver(@Optional String browser , ITestResult result) throws IOException {
-        System.out.println("CURRENT THREAD "+ Thread.currentThread().getId() + " , "+ getDriverManager().getDriver());
-        //getDriver().quit();
+    public synchronized void quitDriver(@Optional String browser, ITestResult result) throws IOException {
+        WebDriver currentDriver = getDriverManager().getDriver();
+        System.out.println("CURRENT THREAD " + Thread.currentThread().getId() + " , " + currentDriver);
+
         if (result.getStatus() == ITestResult.FAILURE){
-            File desFile = new File("scr" + File.separator + browser + File.separator + result
-                    .getTestClass().getRealClass().getSimpleName() + "_" + result.getMethod().getMethodName()
-            + getCurrentTimeDate()+ ".png");
-            takesfullcreenshot(desFile);
+            File desFile = new File("scr" + File.separator + browser + File.separator +
+                    result.getTestClass().getRealClass().getSimpleName() + "_" +
+                    result.getMethod().getMethodName() + "_" + getCurrentTimeDate() + ".png");
+            takesFullScreenshot(desFile);
         }
-        getDriverManager().getDriver().quit();
+
+        if (currentDriver != null) {
+            currentDriver.quit();
+            driver.remove();
+            driverManager.remove();
+        }
     }
 
     public void injectCookieToTheBrowser(Cookies cookies){
         List<Cookie> seleniumCookie = new CookieUtils().convertRestAssuredCookieToSeleniumCookie(cookies);
-        for (Cookie c: seleniumCookie
-             ) {
+        for (Cookie c : seleniumCookie) {
             getDriver().manage().addCookie(c);
         }
     }
 
     private static String getCurrentTimeDate(){
-        String date = new SimpleDateFormat("HH_mm_ss_yyyy_MM_dd").format(new Date());
-        return date;
+        return new SimpleDateFormat("HH_mm_ss_yyyy_MM_dd").format(new Date());
     }
 
-    private boolean takescreenshot(File desfile) throws IOException {
+    private boolean takeScreenshot(File desfile) throws IOException {
         try {
-            FileUtils.copyFile(((TakesScreenshot) getDriverManager().getDriver()).getScreenshotAs(OutputType.FILE),desfile);
+            FileUtils.copyFile(((TakesScreenshot) getDriverManager().getDriver()).getScreenshotAs(OutputType.FILE), desfile);
         } catch (IOException e) {
-            System.out.println("something went wrong"+e.getMessage());
+            System.out.println("Something went wrong: " + e.getMessage());
         }
         return false;
     }
 
-    private boolean takesfullcreenshot(File desfile) throws IOException {
+    private boolean takesFullScreenshot(File desfile) throws IOException {
         Screenshot screenshot = new AShot()
                 .shootingStrategy(ShootingStrategies.viewportPasting(100))
                 .takeScreenshot(getDriverManager().getDriver());
         try {
-            // Ensure the directories exist
+            // Ensure directories exist
             desfile.getParentFile().mkdirs();
-
-            // Create the file if it doesn't exist
             if (!desfile.exists()) {
                 desfile.createNewFile();
             }
@@ -117,7 +126,6 @@ public class BaseTest {
         } catch (IOException e){
             e.printStackTrace();
         }
-
         return false;
     }
 }

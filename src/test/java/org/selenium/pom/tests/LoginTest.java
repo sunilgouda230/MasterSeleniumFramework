@@ -26,13 +26,10 @@ public class LoginTest extends BaseTest {
         Products products = new Products(1215);
         CartApi cartApi = new CartApi(signUpApi.getCookies());
         cartApi.addToCart(products.getId(),1);
-
         CheckOutPage checkOutPage = new CheckOutPage(getDriver()).load();
         injectCookieToTheBrowser(signUpApi.getCookies());
         checkOutPage.load();
         Assert.assertTrue(checkOutPage.getProductItem().contains(products.getName()));
-
-
     }
 }
 
