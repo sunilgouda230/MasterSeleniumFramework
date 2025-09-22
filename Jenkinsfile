@@ -35,21 +35,21 @@ pipeline {
         stage('Generate Allure Report') {
             steps {
                 // Generate Allure HTML report
-                sh 'allure generate target/allure-results -o target/allure-report --clean || true'
+                sh 'allure generate allure-results -o allure-report --clean || true'
 
-                // Archive Allure results for Jenkins UI
-                archiveArtifacts artifacts: 'target/allure-results/**, target/allure-report/**', fingerprint: true
+                // Archive results for Jenkins UI
+                archiveArtifacts artifacts: 'allure-results/**, allure-report/**', fingerprint: true
             }
         }
     }
 
     post {
         always {
-            // Publish JUnit results to Jenkins
             junit 'target/surefire-reports/*.xml'
 
-            // Display Allure report in Jenkins UI
-            allure includeProperties: false, jdk: '', results: [[path: 'target/allure-results']]
+            // Use correct path to results
+            allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
         }
     }
+
 }
