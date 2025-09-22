@@ -32,24 +32,21 @@ pipeline {
             }
         }
 
-        stage('Generate Allure Report') {
-            steps {
-                // Generate Allure HTML report
-                sh 'allure generate allure-results -o allure-report --clean || true'
+       stage('Generate Allure Report') {
+           steps {
+               // Optional: archive allure results for backup
+               archiveArtifacts artifacts: 'allure-results/**', fingerprint: true
+           }
+       }
 
-                // Archive results for Jenkins UI
-                archiveArtifacts artifacts: 'allure-results/**, allure-report/**', fingerprint: true
-            }
-        }
     }
 
     post {
         always {
             junit 'target/surefire-reports/*.xml'
-
-            // Use correct path to results
             allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
         }
     }
+
 
 }
