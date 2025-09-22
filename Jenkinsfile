@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     tools {
-        jdk 'JDK17'       // Name from Jenkins Global Tool Config
-        maven 'Maven3'    // Name from Jenkins Global Tool Config
+        jdk 'JDK17'       // Make sure this matches Jenkins Global Tool Config
+        maven 'Maven'     // Change this to the exact name in Jenkins Global Tool Config
     }
 
     environment {
@@ -32,21 +32,21 @@ pipeline {
             }
         }
 
-       stage('Generate Allure Report') {
-           steps {
-               // Optional: archive allure results for backup
-               archiveArtifacts artifacts: 'allure-results/**', fingerprint: true
-           }
-       }
-
+        stage('Archive Allure Results') {
+            steps {
+                // Archive allure-results folder
+                archiveArtifacts artifacts: 'allure-results/**', fingerprint: true
+            }
+        }
     }
 
     post {
         always {
+            // Publish JUnit results
             junit 'target/surefire-reports/*.xml'
+
+            // Publish Allure report using plugin (no manual allure CLI needed)
             allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
         }
     }
-
-
 }
