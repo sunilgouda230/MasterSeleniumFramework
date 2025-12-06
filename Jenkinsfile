@@ -14,7 +14,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git credentialsId: 'git-creds',
+                git credentialsId: 'git',
                     url: 'https://github.com/sunilgouda230/MasterSeleniumFramework.git',
                     branch: 'main'
             }
