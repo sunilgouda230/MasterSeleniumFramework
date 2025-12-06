@@ -28,7 +28,7 @@ services:
     image: seleniarm/node-firefox:4.20
     shm_size: '5g'
     deploy:
-      replicas: 0
+      replicas: 1
     depends_on:
       - hub
     environment:

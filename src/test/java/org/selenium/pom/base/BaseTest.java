@@ -31,101 +31,114 @@ import java.util.List;
 
 public class BaseTest {
 
+    /**
+     * ThreadLocal WebDriver → Each thread gets its own browser instance
+     */
     private final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+
+    /**
+     * ThreadLocal DriverManager → Also isolated per thread
+     */
     private final ThreadLocal<DriverManagerAbstract> driverManager = new ThreadLocal<>();
+
     private final ConfigLoader config = ConfigLoader.getInstance();
 
-    private void setDriver(WebDriver driver){
-        this.driver.set(driver);
+    protected WebDriver getDriver() {
+        return driver.get();
     }
 
-    protected WebDriver getDriver(){
-        return this.driver.get();
-    }
-
-    public DriverManagerAbstract getDriverManager() {
+    protected DriverManagerAbstract getDriverManager() {
         return driverManager.get();
     }
 
-    public void setDriverManager(DriverManagerAbstract driverManager) {
-        this.driverManager.set(driverManager);
+    private void setDriver(WebDriver driver) {
+        this.driver.set(driver);
     }
 
+    private void setDriverManager(DriverManagerAbstract manager) {
+        this.driverManager.set(manager);
+    }
+
+    // ❌ REMOVED synchronized — otherwise parallel execution breaks
     @Parameters("browser")
     @BeforeMethod
-    public synchronized void startDriver(@Optional String browser){
-        if (browser == null) browser = Constants.CHROME;
+    public void startDriver(@Optional String browser) {
+        if (browser == null) {
+            browser = Constants.CHROME;
+        }
 
         DriverManagerAbstract manager;
 
         if (config.isGridEnabled()) {
-            System.out.println("Grid enabled, using RemoteDriverManagerChrome");
+            System.out.println("Grid enabled → Using RemoteDriver");
             manager = new RemoteDriverManagerChrome();
         } else {
-            System.out.println("Grid disabled, using local driver");
+            System.out.println("Grid disabled → Using Local Driver");
             manager = DriverManagerFactoryAbstract.getManager(DriverType.valueOf(browser));
         }
 
         setDriverManager(manager);
         setDriver(manager.getDriver());
 
-        System.out.println("CURRENT THREAD " + Thread.currentThread().getId() + " , " + getDriverManager().getDriver());
+        System.out.println(
+                "THREAD: " + Thread.currentThread().getId() +
+                        " | DRIVER: " + getDriver()
+        );
     }
 
-    @Parameters("browser")
+    // ❌ REMOVED synchronized — required for real parallel execution
     @AfterMethod
-    public synchronized void quitDriver(@Optional String browser, ITestResult result) throws IOException {
-        WebDriver currentDriver = getDriverManager().getDriver();
-        System.out.println("CURRENT THREAD " + Thread.currentThread().getId() + " , " + currentDriver);
+    public void quitDriver(@Optional String browser, ITestResult result) throws IOException {
+        WebDriver currentDriver = getDriver();
 
-        if (result.getStatus() == ITestResult.FAILURE){
-            File desFile = new File("scr" + File.separator + browser + File.separator +
+        if (currentDriver == null) return;
+
+        System.out.println(
+                "QUIT THREAD: " + Thread.currentThread().getId() +
+                        " | DRIVER: " + currentDriver
+        );
+
+        // Screenshot on failure
+        if (result.getStatus() == ITestResult.FAILURE) {
+
+            File destFile = new File("scr" + File.separator + browser + File.separator +
                     result.getTestClass().getRealClass().getSimpleName() + "_" +
                     result.getMethod().getMethodName() + "_" + getCurrentTimeDate() + ".png");
-            takesFullScreenshot(desFile);
+
+            takesFullScreenshot(destFile);
         }
 
-        if (currentDriver != null) {
-            currentDriver.quit();
-            driver.remove();
-            driverManager.remove();
-        }
+        // Always quit driver
+        currentDriver.quit();
+
+        // Clean ThreadLocal → prevent memory leaks on CI
+        driver.remove();
+        driverManager.remove();
     }
 
-    public void injectCookieToTheBrowser(Cookies cookies){
-        List<Cookie> seleniumCookie = new CookieUtils().convertRestAssuredCookieToSeleniumCookie(cookies);
-        for (Cookie c : seleniumCookie) {
+    public void injectCookieToTheBrowser(Cookies cookies) {
+        List<Cookie> seleniumCookies =
+                new CookieUtils().convertRestAssuredCookieToSeleniumCookie(cookies);
+
+        for (Cookie c : seleniumCookies) {
             getDriver().manage().addCookie(c);
         }
     }
 
-    private static String getCurrentTimeDate(){
+    private static String getCurrentTimeDate() {
         return new SimpleDateFormat("HH_mm_ss_yyyy_MM_dd").format(new Date());
     }
 
-    private boolean takeScreenshot(File desfile) throws IOException {
-        try {
-            FileUtils.copyFile(((TakesScreenshot) getDriverManager().getDriver()).getScreenshotAs(OutputType.FILE), desfile);
-        } catch (IOException e) {
-            System.out.println("Something went wrong: " + e.getMessage());
-        }
-        return false;
-    }
-
-    private boolean takesFullScreenshot(File desfile) throws IOException {
+    private boolean takesFullScreenshot(File destFile) throws IOException {
         Screenshot screenshot = new AShot()
                 .shootingStrategy(ShootingStrategies.viewportPasting(100))
                 .takeScreenshot(getDriverManager().getDriver());
-        try {
-            // Ensure directories exist
-            desfile.getParentFile().mkdirs();
-            if (!desfile.exists()) {
-                desfile.createNewFile();
-            }
-            ImageIO.write(screenshot.getImage(),"PNG",desfile);
-        } catch (IOException e){
-            e.printStackTrace();
-        }
-        return false;
+
+        destFile.getParentFile().mkdirs();
+        if (!destFile.exists()) destFile.createNewFile();
+
+        ImageIO.write(screenshot.getImage(), "PNG", destFile);
+
+        return true;
     }
 }

@@ -2,39 +2,42 @@ pipeline {
     agent any
 
     tools {
-        jdk 'JDK17'       // Make sure this matches Jenkins Global Tool Config
-        maven 'Maven3'     // Change this to the exact name in Jenkins Global Tool Config
+        jdk 'JDK17'           // Jenkins global JDK name
+        maven 'Maven3'        // Jenkins global Maven name
     }
 
     environment {
         SELENIUM_GRID_URL = 'http://localhost:4444/wd/hub'
+        GRID_DIR = '/Users/sunilkumargouda/selenium-grid' // folder where docker-compose.yml is
     }
 
     stages {
         stage('Checkout') {
             steps {
-                // Pull code from GitHub
                 git credentialsId: 'git-creds',
                     url: 'https://github.com/sunilgouda230/MasterSeleniumFramework.git',
                     branch: 'main'
             }
         }
 
-        stage('Build') {
+        stage('Start Selenium Grid') {
             steps {
-                sh 'mvn clean install -DskipTests'
+                dir("${GRID_DIR}") {
+                    sh 'docker-compose up -d'
+                    sh 'docker ps' // optional: verify grid nodes
+                }
             }
         }
 
-        stage('Run Regression Tests') {
+        stage('Build & Run Tests') {
             steps {
-                sh "mvn test -Dselenium.grid.url=${SELENIUM_GRID_URL}"
+                // Maven automatically uses global Maven configured in Jenkins
+                sh "mvn clean test -Dselenium.grid.url=${SELENIUM_GRID_URL}"
             }
         }
 
         stage('Archive Allure Results') {
             steps {
-                // Archive allure-results folder
                 archiveArtifacts artifacts: 'allure-results/**', fingerprint: true
             }
         }
@@ -42,10 +45,18 @@ pipeline {
 
     post {
         always {
+            stage('Stop Selenium Grid') {
+                steps {
+                    dir("${GRID_DIR}") {
+                        sh 'docker-compose down'
+                    }
+                }
+            }
+
             // Publish JUnit results
             junit 'target/surefire-reports/*.xml'
 
-            // Publish Allure report using plugin (no manual allure CLI needed)
+            // Publish Allure report
             allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
         }
     }

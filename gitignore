@@ -30,6 +30,8 @@ Thumbs.db
 # ==========================
 # Maven
 target/
+target/test-classes/
+target/surefire-reports/
 
 # Gradle
 .gradle/
@@ -41,20 +43,25 @@ build/
 # Allure results
 allure-results/
 allure-report/
-*.html
 
 # Logs
 logs/
 *.log
 
-# Reports (Extent, Surefire, TestNG)
+# TestNG / Surefire / Extent reports
 test-output/
-surefire-reports/
 extent-reports/
+testng.xml
+testng-results.xml
+testng-failed.xml
 
 # ==========================
-# Other
-# ==========================
 # Environment / Config
-*.env
+# ==========================
+# Ignore actual environment-specific config files
 *.properties.local
+stage_config.properties
+*.env
+
+# Keep template files in Git
+!*.properties.example
