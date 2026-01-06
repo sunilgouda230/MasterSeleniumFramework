@@ -42,7 +42,9 @@ public class CartApi {
         if (response.getStatusCode() != 200) {
             throw new RuntimeException("Failed to fetch the account, HTTP status code: "+ response.getStatusCode());
         }
+
         this.cookies = response.detailedCookies();
+
         return response;
     }
 }

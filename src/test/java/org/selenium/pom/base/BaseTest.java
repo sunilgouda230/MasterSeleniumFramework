@@ -1,16 +1,12 @@
 package org.selenium.pom.base;
 
 import io.restassured.http.Cookies;
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Cookie;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.selenium.pom.constants.Constants;
 import org.selenium.pom.constants.DriverType;
-import org.selenium.pom.factory.abstractFactory.DriverManagerAbstract;
-import org.selenium.pom.factory.abstractFactory.DriverManagerFactoryAbstract;
-import org.selenium.pom.factory.abstractFactory.RemoteDriverManagerChrome;
+import org.selenium.pom.factory.abstractFactory.DriverFactory;
+import org.selenium.pom.factory.abstractFactory.RemoteDriverChromeProvider;
 import org.selenium.pom.utils.ConfigLoader;
 import org.selenium.pom.utils.CookieUtils;
 import org.testng.ITestResult;
@@ -36,30 +32,16 @@ public class BaseTest {
      */
     private final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
-    /**
-     * ThreadLocal DriverManager → Also isolated per thread
-     */
-    private final ThreadLocal<DriverManagerAbstract> driverManager = new ThreadLocal<>();
-
     private final ConfigLoader config = ConfigLoader.getInstance();
 
     protected WebDriver getDriver() {
         return driver.get();
     }
 
-    protected DriverManagerAbstract getDriverManager() {
-        return driverManager.get();
-    }
-
     private void setDriver(WebDriver driver) {
         this.driver.set(driver);
     }
 
-    private void setDriverManager(DriverManagerAbstract manager) {
-        this.driverManager.set(manager);
-    }
-
-    // ❌ REMOVED synchronized — otherwise parallel execution breaks
     @Parameters("browser")
     @BeforeMethod
     public void startDriver(@Optional String browser) {
@@ -67,18 +49,17 @@ public class BaseTest {
             browser = Constants.CHROME;
         }
 
-        DriverManagerAbstract manager;
+        WebDriver webDriver;
 
         if (config.isGridEnabled()) {
             System.out.println("Grid enabled → Using RemoteDriver");
-            manager = new RemoteDriverManagerChrome();
+            webDriver = new RemoteDriverChromeProvider().getDriver();
         } else {
             System.out.println("Grid disabled → Using Local Driver");
-            manager = DriverManagerFactoryAbstract.getManager(DriverType.valueOf(browser));
+            webDriver = DriverFactory.getDriver(DriverType.CHROME).getDriver();
         }
 
-        setDriverManager(manager);
-        setDriver(manager.getDriver());
+        setDriver(webDriver);
 
         System.out.println(
                 "THREAD: " + Thread.currentThread().getId() +
@@ -113,7 +94,6 @@ public class BaseTest {
 
         // Clean ThreadLocal → prevent memory leaks on CI
         driver.remove();
-        driverManager.remove();
     }
 
     public void injectCookieToTheBrowser(Cookies cookies) {
@@ -132,7 +112,7 @@ public class BaseTest {
     private boolean takesFullScreenshot(File destFile) throws IOException {
         Screenshot screenshot = new AShot()
                 .shootingStrategy(ShootingStrategies.viewportPasting(100))
-                .takeScreenshot(getDriverManager().getDriver());
+                .takeScreenshot(getDriver());
 
         destFile.getParentFile().mkdirs();
         if (!destFile.exists()) destFile.createNewFile();

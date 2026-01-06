@@ -6,6 +6,4 @@ public enum DriverType {
     SAFARI,
     REMOTE_CHROME,
     REMOTE_FIREFOX
-
-
 }
