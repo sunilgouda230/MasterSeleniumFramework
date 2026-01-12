@@ -9,6 +9,7 @@ org/selenium/pom/utils/ConfigLoader.class
 org/selenium/pom/utils/ConfigLoader$1.class
 org/selenium/pom/constants/DriverType.class
 org/selenium/pom/utils/CookieUtils.class
+org/selenium/pom/factory/abstractFactory/DriverManager.class
 org/selenium/pom/utils/PropertyUtils.class
 org/selenium/pom/factory/DriverManager.class
 org/selenium/pom/api/actions/DummyTestCase.class
@@ -29,6 +30,7 @@ org/selenium/pom/tests/SearchTest.class
 org/selenium/pom/factory/abstractFactory/ChromeDriverProvider.class
 org/selenium/pom/factory/abstractFactory/DriverFactory.class
 org/selenium/pom/factory/abstractFactory/RemoteDriverFireFoxProvider.class
+org/selenium/pom/utils/ScreenShotUtil.class
 org/selenium/pom/utils/FakerUtils.class
 org/selenium/pom/objects/User.class
 org/selenium/pom/tests/NavigationTest.class

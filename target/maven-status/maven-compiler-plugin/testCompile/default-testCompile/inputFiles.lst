@@ -13,6 +13,7 @@
 /Users/sunilkumargouda/IdeaProjects/MasterSeleniumFramework/src/test/java/org/selenium/pom/utils/PropertyUtils.java
 /Users/sunilkumargouda/IdeaProjects/MasterSeleniumFramework/src/test/java/org/selenium/pom/tests/AddToCartTest.java
 /Users/sunilkumargouda/IdeaProjects/MasterSeleniumFramework/src/test/java/org/selenium/pom/dataprovider/CustomDataProvider.java
+/Users/sunilkumargouda/IdeaProjects/MasterSeleniumFramework/src/test/java/org/selenium/pom/utils/ScreenShotUtil.java
 /Users/sunilkumargouda/IdeaProjects/MasterSeleniumFramework/src/test/java/org/selenium/pom/tests/NavigationTest.java
 /Users/sunilkumargouda/IdeaProjects/MasterSeleniumFramework/src/test/java/org/selenium/pom/base/BaseTest.java
 /Users/sunilkumargouda/IdeaProjects/MasterSeleniumFramework/src/test/java/org/selenium/pom/objects/User.java
@@ -28,6 +29,7 @@
 /Users/sunilkumargouda/IdeaProjects/MasterSeleniumFramework/src/test/java/org/selenium/pom/factory/abstractFactory/FirefoxDriverProvider.java
 /Users/sunilkumargouda/IdeaProjects/MasterSeleniumFramework/src/test/java/org/selenium/pom/factory/abstractFactory/AbstractDriverFactory.java
 /Users/sunilkumargouda/IdeaProjects/MasterSeleniumFramework/src/test/java/org/selenium/pom/tests/CheckOutTest.java
+/Users/sunilkumargouda/IdeaProjects/MasterSeleniumFramework/src/test/java/org/selenium/pom/factory/abstractFactory/DriverManager.java
 /Users/sunilkumargouda/IdeaProjects/MasterSeleniumFramework/src/test/java/org/selenium/pom/tests/SearchTest.java
 /Users/sunilkumargouda/IdeaProjects/MasterSeleniumFramework/src/test/java/org/selenium/pom/utils/CookieUtils.java
 /Users/sunilkumargouda/IdeaProjects/MasterSeleniumFramework/src/test/java/org/selenium/pom/factory/abstractFactory/DriverFactory.java

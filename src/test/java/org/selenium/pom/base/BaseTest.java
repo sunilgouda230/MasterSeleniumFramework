@@ -6,9 +6,11 @@ import org.openqa.selenium.WebDriver;
 import org.selenium.pom.constants.Constants;
 import org.selenium.pom.constants.DriverType;
 import org.selenium.pom.factory.abstractFactory.DriverFactory;
+import org.selenium.pom.factory.abstractFactory.DriverManager;
 import org.selenium.pom.factory.abstractFactory.RemoteDriverChromeProvider;
 import org.selenium.pom.utils.ConfigLoader;
 import org.selenium.pom.utils.CookieUtils;
+import org.selenium.pom.utils.ScreenShotUtil;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -32,8 +34,6 @@ public class BaseTest {
      */
     private final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
-    private final ConfigLoader config = ConfigLoader.getInstance();
-
     protected WebDriver getDriver() {
         return driver.get();
     }
@@ -49,15 +49,7 @@ public class BaseTest {
             browser = Constants.CHROME;
         }
 
-        WebDriver webDriver;
-
-        if (config.isGridEnabled()) {
-            System.out.println("Grid enabled → Using RemoteDriver");
-            webDriver = new RemoteDriverChromeProvider().getDriver();
-        } else {
-            System.out.println("Grid disabled → Using Local Driver");
-            webDriver = DriverFactory.getDriver(DriverType.CHROME).getDriver();
-        }
+        WebDriver webDriver = DriverManager.createDriver(browser);
 
         setDriver(webDriver);
 
@@ -86,7 +78,7 @@ public class BaseTest {
                     result.getTestClass().getRealClass().getSimpleName() + "_" +
                     result.getMethod().getMethodName() + "_" + getCurrentTimeDate() + ".png");
 
-            takesFullScreenshot(destFile);
+            ScreenShotUtil.captureFullPage(driver.get(),destFile);
         }
 
         // Always quit driver
@@ -107,18 +99,5 @@ public class BaseTest {
 
     private static String getCurrentTimeDate() {
         return new SimpleDateFormat("HH_mm_ss_yyyy_MM_dd").format(new Date());
-    }
-
-    private boolean takesFullScreenshot(File destFile) throws IOException {
-        Screenshot screenshot = new AShot()
-                .shootingStrategy(ShootingStrategies.viewportPasting(100))
-                .takeScreenshot(getDriver());
-
-        destFile.getParentFile().mkdirs();
-        if (!destFile.exists()) destFile.createNewFile();
-
-        ImageIO.write(screenshot.getImage(), "PNG", destFile);
-
-        return true;
     }
 }
